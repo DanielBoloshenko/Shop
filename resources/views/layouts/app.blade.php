@@ -7,6 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <style>
+        .dropdown-item.active {
+            background: grey;
+        }
+    </style>
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -29,23 +35,41 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto me-4">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                        <input type="search" placeholder="Поиск" class="form-control me-4">
+
+                        <div class="dropdown mt-2 me-3">
+                            <a class="dropdown-toggle text=decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Меню
+                            </a>
+
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item active" href="#">Продукция и услуги</a></li>
+                              <li><a class="dropdown-item" href="#">О компании</a></li>
+                              <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
+                              <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
+                              <li><a class="dropdown-item" href="#">Работа в компании</a></li>
+                              <li><a class="dropdown-item" href="#">Контакты</a></li>
+                              <li><a class="dropdown-item" href="#">Написать нам</a></li>
+                            </ul>
+                          </div>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li class="nav-item me-2">
+                                    <a class="nav-link btn btn-outline-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link btn btn-dark text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -76,5 +100,22 @@
             @yield('content')
         </main>
     </div>
+
+    {{-- <footer class="border-top">
+        <div class="row">
+            <div class="d-flex">
+                <b>Shop</b>
+                <div>
+                    <a href="">О компании</a>
+                    <a href="">Клиентам и партнерам</a>
+                    <a href="">Работа в компании</a>
+                </div>
+                <div class="text-end">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </footer> --}}
 </body>
 </html>

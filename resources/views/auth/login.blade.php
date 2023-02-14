@@ -53,16 +53,19 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
+                                        {{ __('Забыли пароль?') }}
                                     </a>
                                 @endif
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <p>Нет аккаунта?<a href="{{ route('login') }}" class="text-dark">Зарегистрируйтесь</a></p>
                         </div>
                     </form>
                 </div>
