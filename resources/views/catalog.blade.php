@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ request()->fullUrlWithQuery(['category' => 'laptop']) }}" class="text-decoration-none text-dark">
+            <a href="{{ request()->fullUrlWithQuery(['category' => 'laptops']) }}" class="text-decoration-none text-dark">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('img/5hq.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="d-flex">
+        <div class="d-flex justify-content-between mt-5">
             @forelse ($products as $p)
                     <a href="{{ route('details', $p->id) }}" class="text-decoration-none text-dark">
                         <div class="card" style="width: 18rem;">
@@ -59,9 +59,9 @@
                             </div>
                         </div>
                     </a>
-                    @empty
+                @empty
                     <p>no items</p>
-                @endforelse
+            @endforelse
         </div>
     </div>
 </div>

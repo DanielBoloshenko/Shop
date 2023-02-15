@@ -34,11 +34,11 @@
 
                     </ul>
 
-                    <ul class="d-flex">
-                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
-                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
-                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
-                    </ul>
+                    <div>
+                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
+                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
+                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

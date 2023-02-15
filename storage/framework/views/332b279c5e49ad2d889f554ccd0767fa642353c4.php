@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </a>
-            <a href="<?php echo e(request()->fullUrlWithQuery(['category' => 'laptop'])); ?>" class="text-decoration-none text-dark">
+            <a href="<?php echo e(request()->fullUrlWithQuery(['category' => 'laptops'])); ?>" class="text-decoration-none text-dark">
                 <div class="card" style="width: 18rem;">
                     <img src="<?php echo e(asset('img/5hq.png')); ?>" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="d-flex">
+        <div class="d-flex justify-content-between mt-5">
             <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <a href="<?php echo e(route('details', $p->id)); ?>" class="text-decoration-none text-dark">
                         <div class="card" style="width: 18rem;">
@@ -57,9 +57,9 @@
                             </div>
                         </div>
                     </a>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <p>no items</p>
-                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
