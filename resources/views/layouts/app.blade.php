@@ -7,11 +7,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <style>
-        .dropdown-item.active {
-            background: grey;
-        }
-    </style>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -39,18 +34,24 @@
 
                     </ul>
 
+                    <ul class="d-flex">
+                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
+                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
+                        <li><a class="text-decoration-none text-dark" href="{{ route('catalog') }}">Каталог</a></li>
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
 
                         <input type="search" placeholder="Поиск" class="form-control me-4">
 
                         <div class="dropdown mt-2 me-3">
-                            <a class="dropdown-toggle text=decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Меню
                             </a>
 
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item active" href="#">Продукция и услуги</a></li>
+                              <li><a class="dropdown-item active" href="{{ route('catalog') }}">Продукция и услуги</a></li>
                               <li><a class="dropdown-item" href="#">О компании</a></li>
                               <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
                               <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
@@ -58,7 +59,7 @@
                               <li><a class="dropdown-item" href="#">Контакты</a></li>
                               <li><a class="dropdown-item" href="#">Написать нам</a></li>
                             </ul>
-                          </div>
+                        </div>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -75,14 +76,14 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->email }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выйти') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -101,21 +102,19 @@
         </main>
     </div>
 
-    {{-- <footer class="border-top">
-        <div class="row">
-            <div class="d-flex">
-                <b>Shop</b>
-                <div>
-                    <a href="">О компании</a>
-                    <a href="">Клиентам и партнерам</a>
-                    <a href="">Работа в компании</a>
-                </div>
-                <div class="text-end">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                </div>
-            </div>
-        </div>
-    </footer> --}}
+    <div class="container fixed-bottom">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <img src="" alt="">
+            </a>
+            <span class="mb-3 mb-md-0 mx-4"><b>Copy Star</b> 2022 Company, Inc</span>
+          </div>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex mx-5">
+            <li class="ms-3"><a class="text-muted" href="#"><img src="{{ asset('img/icons8-telegram-app-48.png') }}" width="24" height="24" alt=""></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><img src="{{ asset('img/icons8-vk-24 (1).png') }}" width="24" height="24" alt=""></a></li>
+          </ul>
+        </footer>
+      </div>
 </body>
 </html>

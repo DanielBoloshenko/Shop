@@ -20,10 +20,11 @@ use App\Http\Controllers\CatalogController;
 
 Auth::routes();
 
-Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/', [MainController::class, 'main'])->name('main');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', [AboutUsController::class, 'aboutUs'])->name('aboutUs');
 
 Route::get('/catalog', [CatalogController::class, 'catalog'])->name('catalog');
-Route::get('/catalog/category/', [CatalogController::class, 'category'])->name('category');
-Route::get('/catalog/category/{id}/details/{product_id}', [CatalogController::class, 'details'])->name('details');
+Route::get('/catalog/details/{product_id}', [CatalogController::class, 'details'])->name('details');

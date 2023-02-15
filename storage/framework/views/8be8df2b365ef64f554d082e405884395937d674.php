@@ -7,11 +7,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <style>
-        .dropdown-item.active {
-            background: grey;
-        }
-    </style>
 
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
@@ -40,18 +35,24 @@
 
                     </ul>
 
+                    <ul class="d-flex">
+                        <li><a class="text-decoration-none text-dark" href="<?php echo e(route('catalog')); ?>">Каталог</a></li>
+                        <li><a class="text-decoration-none text-dark" href="<?php echo e(route('catalog')); ?>">Каталог</a></li>
+                        <li><a class="text-decoration-none text-dark" href="<?php echo e(route('catalog')); ?>">Каталог</a></li>
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
 
                         <input type="search" placeholder="Поиск" class="form-control me-4">
 
                         <div class="dropdown mt-2 me-3">
-                            <a class="dropdown-toggle text=decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Меню
                             </a>
 
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item active" href="#">Продукция и услуги</a></li>
+                              <li><a class="dropdown-item active" href="<?php echo e(route('catalog')); ?>">Продукция и услуги</a></li>
                               <li><a class="dropdown-item" href="#">О компании</a></li>
                               <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
                               <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
@@ -59,7 +60,7 @@
                               <li><a class="dropdown-item" href="#">Контакты</a></li>
                               <li><a class="dropdown-item" href="#">Написать нам</a></li>
                             </ul>
-                          </div>
+                        </div>
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
@@ -76,7 +77,7 @@
                         <?php else: ?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo e(Auth::user()->name); ?>
+                                    <?php echo e(Auth::user()->email); ?>
 
                                 </a>
 
@@ -84,7 +85,7 @@
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Logout')); ?>
+                                        <?php echo e(__('Выйти')); ?>
 
                                     </a>
 
@@ -104,7 +105,20 @@
         </main>
     </div>
 
-    
+    <div class="container fixed-bottom">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <img src="" alt="">
+            </a>
+            <span class="mb-3 mb-md-0 mx-4"><b>Copy Star</b> 2022 Company, Inc</span>
+          </div>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex mx-5">
+            <li class="ms-3"><a class="text-muted" href="#"><img src="<?php echo e(asset('img/icons8-telegram-app-48.png')); ?>" width="24" height="24" alt=""></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><img src="<?php echo e(asset('img/icons8-vk-24 (1).png')); ?>" width="24" height="24" alt=""></a></li>
+          </ul>
+        </footer>
+      </div>
 </body>
 </html>
 <?php /**PATH /srv/users/vrurvmcg/bbaxtvc-m1/resources/views/layouts/app.blade.php ENDPATH**/ ?>
