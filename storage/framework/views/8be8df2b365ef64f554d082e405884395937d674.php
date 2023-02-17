@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-xl navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <?php echo e(config('app.name', 'Laravel')); ?>
@@ -44,7 +44,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
 
-                        <input type="search" placeholder="Поиск" class="form-control me-4">
+                        <form action="<?php echo e(route('search')); ?>" class="me-2">
+                            <div class="input-group mb-3">
+                                <input type="search" class="form-control" id="search" name="search" placeholder="Поиск..." aria-label="Поиск" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-dark" type="submit" id="button-addon2">Поиск</button>
+                              </div>
+                        </form>
 
                         <div class="dropdown mt-2 me-3">
                             <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,13 +70,13 @@
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
                                 <li class="nav-item me-2">
-                                    <a class="nav-link btn btn-outline-dark" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                    <a class="btn btn-outline-dark" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                                 </li>
                             <?php endif; ?>
 
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-dark text-white" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                    <a class="btn btn-dark text-white" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
@@ -82,6 +87,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo e(route('cartPage')); ?>">Корзина</a>
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -105,7 +111,7 @@
         </main>
     </div>
 
-    <div class="container fixed-bottom">
+    <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
