@@ -18,25 +18,29 @@ class CartController extends Controller
                 'qty' => 1,
             ];
         }   else {
-            $cart[$product->id]['qty']++; 
+            $cart[$product->id]['qty']++;
         }
 
         session()->put('cart', $cart);
         DB::table('products')->where('id', $product_id)->decrement('count');
 
-        return to_route('catalog');
+        return back();
     }
 
     public function index()
     {
+        if(!session()->has('cart')) {
+            session()->put('cart',[]);
+        }
         $products = session()->get('cart');
         return view('cart', compact('products'));
+
     }
 
     public function deleteFromCart($id) {
         $qtyStr = 'cart.'.$id.'.qty';
         $qty = session()->get($qtyStr);
-        
+
         if($qty <= 1) {
             session()->forget('cart.'.$id);
         } else {

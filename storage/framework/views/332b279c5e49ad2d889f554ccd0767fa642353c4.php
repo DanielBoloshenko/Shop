@@ -1,4 +1,3 @@
-    
 <?php $__env->startSection('content'); ?>
 
 <div class="d-flex justify-content-center mb-4">
@@ -73,7 +72,7 @@
                     </div>
                     <form action="<?php echo e(route('addToCart', $p->id)); ?>" method="POST" class="card-footer d-flex justify-content-between mt-auto">
                         <?php echo csrf_field(); ?>
-                        <strong class="mt-2"><?php echo e($p->price); ?> ₽</strong><button type="submit" class="btn btn-dark">В корзину</button>
+                        <strong class="mt-2"><?php echo e($p->price); ?> ₽</strong><div class="mt-2 text-muted"><?php echo e($p->count); ?> шт.</div><button type="submit" class="btn btn-dark">В корзину</button>
                     </form>
                 </div>
             </div>

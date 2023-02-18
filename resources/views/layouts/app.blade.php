@@ -85,7 +85,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('cartPage') }}">Корзина</a>
+                                    <a class="dropdown-item" href="">Главная</a>
+                                    <a class="dropdown-item" href="">Мои заказы</a>
+                                    <a class="dropdown-item" href="">Мои данные</a>
+                                    <a class="dropdown-item" href="{{ route('cartPage') }}">Моя корзина</a>
+                                    <a class="dropdown-item" href="">Документы</a>
+                                    <a class="dropdown-item" href="">Подача рекламаций</a>
+                                    <a class="dropdown-item" href="">Сообщения</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

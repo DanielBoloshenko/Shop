@@ -1,5 +1,5 @@
 @extends('layouts.app')
-    
+
 @section('content')
 
 <div class="d-flex justify-content-center mb-4">
@@ -74,7 +74,7 @@
                     </div>
                     <form action="{{ route('addToCart', $p->id) }}" method="POST" class="card-footer d-flex justify-content-between mt-auto">
                         @csrf
-                        <strong class="mt-2">{{ $p->price }} ₽</strong><button type="submit" class="btn btn-dark">В корзину</button>
+                        <strong class="mt-2">{{ $p->price }} ₽</strong><div class="mt-2 text-muted">{{ $p->count }} шт.</div><button type="submit" class="btn btn-dark">В корзину</button>
                     </form>
                 </div>
             </div>
