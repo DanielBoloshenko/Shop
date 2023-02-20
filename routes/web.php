@@ -32,7 +32,6 @@ Route::get('/catalog/details/{product_id}', [CatalogController::class, 'details'
 
 Route::get('/search', [MainController::class, 'search'])->name('search');
 
-
 Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::get('/cart', [CartController::class, 'index'])->name('cartPage');
 Route::post('/cart/{id}/delete', [CartController::class, 'deleteFromCart'])->name('deleteFromCart');

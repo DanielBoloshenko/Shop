@@ -34,37 +34,20 @@
 
                     </ul>
 
-                    <div>
-                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
-                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
-                        <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
-                    </div>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-
+                        <div class="mt-2">
+                            <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Каталог</a>
+                            <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">Контакты</a>
+                            <a class="text-decoration-none text-dark me-4" href="{{ route('catalog') }}">О нас</a>
+                        </div>
                         <form action="{{ route('search') }}" class="me-2">
-                            <div class="input-group mb-3">
+                            <div class="input-group">
                                 <input type="search" class="form-control" id="search" name="search" placeholder="Поиск..." aria-label="Поиск" aria-describedby="button-addon2">
                                 <button class="btn btn-outline-dark" type="submit" id="button-addon2">Поиск</button>
                               </div>
                         </form>
 
-                        <div class="dropdown mt-2 me-3">
-                            <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Меню
-                            </a>
-
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item active" href="{{ route('catalog') }}">Продукция и услуги</a></li>
-                              <li><a class="dropdown-item" href="#">О компании</a></li>
-                              <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
-                              <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
-                              <li><a class="dropdown-item" href="#">Работа в компании</a></li>
-                              <li><a class="dropdown-item" href="#">Контакты</a></li>
-                              <li><a class="dropdown-item" href="#">Написать нам</a></li>
-                            </ul>
-                        </div>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

@@ -15,11 +15,16 @@
                                         <h1 class="fw-bold mb-0 text-black">Корзина покупок</h1>
                                     </div>
                                     <hr class="my-4">
-
+                                    @php
+                                        $sum = 0;
+                                    @endphp
                                     @forelse ($products as $product_id => $product)
                                         @php
                                             $qty = $product['qty'];
                                             $product = $products[$product_id]['product'];
+                                            $amount = $product->price * $qty;
+
+                                            $sum = $sum+$amount;
                                         @endphp
                                         @if ($product)
 
@@ -58,7 +63,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="d-flex col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0 mt-2 align-middle text-nowrap me-2ssh">{{ $product->price * $qty }} ₽</h6>
+                                                    <h6 class="mb-0 mt-2 align-middle text-nowrap me-2ssh">{{ $amount }} ₽</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -66,7 +71,7 @@
                                             </div>
                                         @endif
                                         @empty
-                                            <h2>Добавьте товар в корзину</h2>
+                                            <h2>Пожалуйста, добавьте товар в корзину.</h2>
                                     @endforelse
 
                                     <hr class="my-4">
@@ -83,9 +88,14 @@
                                     <hr class="my-4">
 
                                     <div class="d-flex justify-content-between mb-4">
-                                        {{-- <h5 class="text-uppercase">@if($qty >= 1) {{ $qty }} товара @else 0 товаров @endif</h5> --}}
+                                        {{-- <h5 class="text-uppercase">@if($qty > 0) {{ $qty }} товара @else 0 товаров</h5> --}}
+                                        {{-- @if($qty > 0)
+                                            <h5>{{ $qty }}товара</h5>
+                                        @else
+                                            <h5>0 товаров</h5>
+                                        @endif --}}
                                         <h5 class="text-uppercase">3 товара</h5>
-                                        <h5>{{ $product->price * $qty }}</h5>
+                                        <h5>{{ $sum }}</h5>
                                     </div>
 
                                     <h5 class="text-uppercase mb-3">Доставка</h5>
@@ -112,7 +122,7 @@
 
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="text-uppercase">Итоговая цена</h5>
-                                        <h5>₽ 30500.00</h5>
+                                        <h5>₽ {{ $sum }}</h5>
                                     </div>
 
                                     <button type="button" class="btn btn-dark btn-block btn-lg"

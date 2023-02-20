@@ -38,6 +38,7 @@ class CartController extends Controller
     }
 
     public function deleteFromCart($id) {
+
         $qtyStr = 'cart.'.$id.'.qty';
         $qty = session()->get($qtyStr);
 

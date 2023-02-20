@@ -14,7 +14,7 @@ class CatalogController extends Controller
 
             isset($r->category) ? $table->where('category', $r->category) : null;
 
-            isset($r->field) ? $table->where($r->field, $r->order) : null;
+            isset($r->field) ? $table->orderBy($r->field, $r->order) : null;
 
             $products = $table->get();
         } else {

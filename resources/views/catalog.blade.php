@@ -3,41 +3,41 @@
 @section('content')
 
 <div class="d-flex justify-content-center mb-4">
-    <h1>Категории</h1>
+    <h1 class="fw-bold">Категории</h1>
 </div>
 <div class="container">
     <div class="row">
         <div class="d-flex flex-wrap justify-content-between">
-            <a href="{{ request()->fullUrlWithQuery(['category' => 'phones']) }}" class="text-decoration-none text-dark">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/5hq.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">Телефоны</h5>
+            <a href="{{ request()->fullUrlWithQuery(['category' => 'accessories']) }}" class="text-decoration-none text-dark">
+                <div id="category" name="category" class="card d-flex flex-column justify-content-between" style="width: 18rem; height: 100%;">
+                    <div style="width: 286px;">
+                        <img src="{{ asset('img/iphone.jpg') }}" class="card-img-top overflow-hidden" style="width: 100%;" alt="...">
                     </div>
-                </div>
-            </a>
-            <a href="{{ request()->fullUrlWithQuery(['category' => 'consoles']) }}" class="text-decoration-none text-dark">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/5hq.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">Приставки</h5>
-                    </div>
+                    <h5 class="card-title d-flex justify-content-center fw-bold fs-3 mb-2">Телефоны</h5>
                 </div>
             </a>
             <a href="{{ request()->fullUrlWithQuery(['category' => 'accessories']) }}" class="text-decoration-none text-dark">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/5hq.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">Аксессуары</h5>
+                <div id="category" name="category" class="card d-flex flex-column justify-content-between" style="width: 18rem; height: 100%;">
+                    <div style="width: 286px;">
+                        <img src="{{ asset('img/ps5.jpg') }}" class="card-img-top overflow-hidden" style="width: 100%;" alt="...">
                     </div>
+                    <h5 class="card-title d-flex justify-content-center fw-bold fs-3 mb-2">Приставки</h5>
                 </div>
             </a>
-            <a href="{{ request()->fullUrlWithQuery(['category' => 'laptops']) }}" class="text-decoration-none text-dark">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('img/5hq.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">Ноутбуки</h5>
+            <a href="{{ request()->fullUrlWithQuery(['category' => 'accessories']) }}" class="text-decoration-none text-dark">
+                <div id="category" name="category" class="card d-flex flex-column justify-content-between" style="width: 18rem; height: 100%;">
+                    <div style="width: 286px;">
+                        <img src="{{ asset('img/ps5gp.webp') }}" class="card-img-top overflow-hidden" style="width: 100%;" alt="...">
                     </div>
+                    <h5 class="card-title d-flex justify-content-center fw-bold fs-3 mb-2">Аксессуары</h5>
+                </div>
+            </a>
+            <a href="{{ request()->fullUrlWithQuery(['category' => 'accessories']) }}" class="text-decoration-none text-dark">
+                <div id="category" name="category" class="card d-flex flex-column justify-content-between" style="width: 18rem; height: 100%;">
+                    <div style="width: 286px;">
+                        <img src="{{ asset('img/macbook.jpg') }}" class="card-img-top overflow-hidden" style="width: 100%;" alt="...">
+                    </div>
+                    <h5 class="card-title d-flex justify-content-center fw-bold fs-3 mb-2">Ноутбуки</h5>
                 </div>
             </a>
         </div>
@@ -56,8 +56,9 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['field' => 'name', 'order' => 'asc']) }}">Название по возрастанию</a></li>
                   <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['field' => 'name', 'order' => 'desc']) }}">Название по убыванию</a></li>
-                  <li><a class="dropdown-item" href="#">Цена по возрастанию</a></li>
-                  <li><a class="dropdown-item" href="#">Цена по убыванию</a></li>
+                  <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['field' => 'price', 'order' => 'asc']) }}">Цена по возрастанию</a></li>
+                  <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['field' => 'price', 'order' => 'desc']) }}">Цена по убыванию</a></li>
+                  <li><a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['field' => null, 'order' => null]) }}">Сбросить сортировку</a></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +66,7 @@
 </div>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-        @foreach ($products as $p)
+        @forelse($products as $p)
             <div class="col">
                 <div class="card h-100">
                     <a href="{{ route('details', $p->id) }}"><img src="{{ asset('img/'.$p->img) }}" class="card-img-top" alt="..."></a>
@@ -78,7 +79,9 @@
                     </form>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <h2 class="text-center">Товар скоро появится в наличии</h2>
+        @endforelse
       </div>
 </div>
 
